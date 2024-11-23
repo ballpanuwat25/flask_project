@@ -624,6 +624,11 @@ body {
     font-size: 1rem;
     margin: 0 0 16px;
     color: #555;
+
+    display: -webkit-box;        /* ใช้ Flexbox แบบ Webkit */
+    -webkit-line-clamp: 2;       /* แสดงข้อความ 3 บรรทัด */
+    -webkit-box-orient: vertical;/* กำหนดการจัดข้อความในแนวตั้ง */
+    overflow: hidden;
 }
 
 .card-button {

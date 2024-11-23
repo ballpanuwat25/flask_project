@@ -388,7 +388,7 @@ function renderLoginContent() {
 function checkLoginStatus() {
     // ตรวจสอบว่า access_token มีหรือไม่
     let token = localStorage.getItem('access_token');
-    console.log("token", token);
+    // console.log("token", token);
     
     if (token) {
         // ถ้ามี token แสดงปุ่ม logout และซ่อนปุ่ม login/register
@@ -631,10 +631,6 @@ function renderCheckbox() {
 }
 
 function renderProfileContent() {
-    // $('#profile_form input').on('focus', function() {
-    //     console.log($(this).attr('name') + ' ได้รับ focus');
-    // });
-
     $.ajax({
         url: '/getprofile',
         type: 'GET',
@@ -931,7 +927,7 @@ function renderFoodDetail() {
     let url = window.location.href;
     let mode = getQueryParameter(url, "mode")
 
-    console.log("mode", mode);
+    // console.log("mode", mode);
 
     if(mode == "add"){
         $('#food_save_btn').show();
@@ -1110,9 +1106,12 @@ function handleButtonClick(foodId) {
 }
 
 function renderProfileForm(data) {
-    // let imagePath = `/static/pictest.png`;
-    console.log("data", data);
-    let imagePath = `/static/uploads/${data.profile_picture}`;
+
+    let imagePath= "";
+    if(!data.profile_picture){
+        imagePath = `/static/image4.jpg`;
+    }
+
     let html = `
         <h1 style="margin-bottom: 20px;">ข้อมูลส่วนตัว</h1>
         <div class="profile_content" id="profile_content">
@@ -1207,4 +1206,13 @@ function renderProfileForm(data) {
     `;
 
     return html;
+}
+
+function checkImageExists(imagePath) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true); // รูปโหลดสำเร็จ
+        img.onerror = () => resolve(false); // รูปโหลดไม่สำเร็จ
+        img.src = imagePath;
+    });
 }
