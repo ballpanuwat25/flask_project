@@ -152,7 +152,7 @@ function renderRegisterContent() {
         if(password != confirm_password){
             Toastify({
                 text: "รหัสผ่านไม่ตรงกัน",
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
@@ -203,7 +203,7 @@ function renderRegisterContent() {
             // console.log("result", result);
             Toastify({
                 text: result.message,
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
@@ -253,7 +253,7 @@ function renderRegisterContent() {
         }).then((result) => {
             Toastify({
                 text: result.message,
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
@@ -341,7 +341,7 @@ function renderLoginContent() {
 
             Toastify({
                 text: "เข้าสู่ระบบสำเร็จ กำลังพาคุณไปยังหน้าหลัก",
-                duration: 3000, // แสดง 3 วินาที
+                duration: 1000, // แสดง 3 วินาที
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "center", // `left`, `center` or `right`
@@ -352,13 +352,13 @@ function renderLoginContent() {
             setTimeout(() => {
                 localStorage.setItem('access_token', access_token);
                 window.location.href = "/";
-            }, 3000); // 3000ms คือเวลาที่ Toastify แสดง
+            }, 1200); // 3000ms คือเวลาที่ Toastify แสดง
             
         }).catch((err) => {
             // alert(err.status);
             Toastify({
                 text: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
@@ -672,7 +672,7 @@ function renderProfileContent() {
             if(password == ""){
                 Toastify({
                     text: "กรุณากรอกรหัสผ่าน",
-                    duration: 3000,
+                    duration: 1000,
                     close: true,
                     gravity: "top", // `top` or `bottom`
                     position: "center", // `left`, `center` or `right`
@@ -710,7 +710,7 @@ function renderProfileContent() {
                 // alert(result.message);
                 Toastify({
                     text: result.message,
-                    duration: 3000,
+                    duration: 1000,
                     close: true,
                     gravity: "top", // `top` or `bottom`
                     position: "center", // `left`, `center` or `right`
@@ -721,13 +721,13 @@ function renderProfileContent() {
 
                 setTimeout(() => {
                     window.location.reload();
-                }, 3000);
+                }, 1200);
             }).catch((err) => {
                 // console.log("err", err);
                 if(err.status == 401) {
                     Toastify({
                         text: "กรุณาเข้าสู่ระบบ",
-                        duration: 3000,
+                        duration: 1000,
                         close: true,
                         gravity: "top", // `top` or `bottom`
                         position: "center", // `left`, `center` or `right`
@@ -741,7 +741,7 @@ function renderProfileContent() {
 
                     setTimeout(() => {
                         window.location.href = "/login";
-                    }, 3000);
+                    }, 1200);
                 }
             });
         });
@@ -787,6 +787,27 @@ function renderProfileContent() {
               }
             });
         });
+    }).catch((err) => {
+        // console.log("err", err.responseJSON.error);
+        if(err.status == 401) {
+            Toastify({
+                text: "กรุณาเข้าสู่ระบบ",
+                duration: 1000,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, #FF4B2B, #FF416C)", // สีพื้นหลัง
+                onClick: function() {
+                    // เมื่อผู้ใช้คลิกที่ Toast ให้ทำการ redirect
+                    localStorage.removeItem('access_token');
+                    window.location.href = "/login";
+                }
+            }).showToast();
+
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 1200);
+        }
     });
 }
 
@@ -807,7 +828,7 @@ function renderHistoryContent() {
         if(err.status == 401) {
             Toastify({
                 text: "กรุณาเข้าสู่ระบบ",
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "center", // `left`, `center` or `right`
@@ -821,7 +842,7 @@ function renderHistoryContent() {
 
             setTimeout(() => {
                 window.location.href = "/login";
-            }, 3000);
+            }, 1200);
         }
     });
 
@@ -935,7 +956,7 @@ function renderFoodDetail() {
         }).then((result) => {
             Toastify({
                 text: result.message,
-                duration: 3000,
+                duration: 1000,
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
