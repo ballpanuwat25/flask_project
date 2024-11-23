@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <title>My Recipe Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}?v=1" defer></script>
+</head>
+<body>
+    <div class="main_container">
+        <nav class="nav_bar" style="padding: 20px;">
+            <a href="/" class="nav_logo"><i class="fa-solid fa-book"></i> Menu Recommend</a>
+
+            <div class="nav_bar nav_menu" style="width: fit-content;">
+                <!-- <a href="/">หน้าหลัก</a> -->
+                <!-- <a href="/menu">เมนูอาหาร</a> -->
+                <a href="/">แนะนำเมนูอาหาร</a>
+                <a href="/profile">ข้อมูลส่วนตัว</a>
+                <a href="/history">ประวัติเมนูที่เคยเลือกรับประทาน</a>
+            </div>
+    
+            <div class="nav_bar" style="width: fit-content;">
+                <a href="/login" class="nav_btn login_btn" id="nav_login_btn">เข้าสู่ระบบ</a>
+                <a href="/register" class="nav_btn register_btn" id="register_btn">สมัครสมาชิก</a>
+    
+                <a style="display: none;" class="nav_btn logout_btn" id="logout_btn">ออกจากระบบ</a>
+            </div>
+
+        </nav>
+
+        <hr>
+
+        <main class="main_content">
+            <div class="content_block">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

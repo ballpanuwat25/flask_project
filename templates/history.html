@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block content %}
+        <div class="history_container">
+            <h1 style="margin-bottom: 20px;">ประวัติเมนูที่เคยรับประทาน</h1>
+            
+            <div class="history_filter">
+                <label for="filter" style="color: #999;">ตัวกรอง</label>
+                <div class="dropdown" id="orderDropdown">
+                    <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="orderDropdown">
+                        <p style='font-family: "Kanit", serif;'>เลือกการเรียงลำดับ</p>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown__list">
+                        <li class="dropdown__item" data-value="asc">เรียงลำดับตามวันที่บันทึก (จากอดีตถึงปัจจุบัน)</li>
+                        <li class="dropdown__item" data-value="desc">เรียงลำดับตามวันที่บันทึก (จากปัจจุบันถึงอดีต)</li>
+                    </ul>
+                    <input type="hidden" id="order" name="order" required>
+                </div>
+            </div>
+
+            <div class="history_content" id="history_content"></div>
+        </div>
+    {% endblock %}
+</body>

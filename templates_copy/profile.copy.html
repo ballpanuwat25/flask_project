@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 20rem;">
+                <img src="{{ url_for('static', filename='image4.jpg') }}" class="card-img-top" alt="Image 4">
+                <div class="card-body">
+                    <h5 class="card-title">ชื่อจริง นามสกุล</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">อายุ : {{user.age}}</li>
+                    <li class="list-group-item">เพศ : {{user.gender}}</li>
+                    <li class="list-group-item">ส่วนสูง : {{user.height}}</li>
+                    <li class="list-group-item">น้ำหนัก : {{user.weight}}</li>
+                    <li class="list-group-item">BMI : {{user.bmi}}</li>
+                    <li class="list-group-item">พลังงานที่ควรได้รับต่อวัน :</li>
+                    <li class="list-group-item">ประวัติการแพ้อาหาร :</li>
+                </ul>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#foodHistoryModal">
+                    ประวัติการรับประทานอาหาร
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="foodHistoryModal" tabindex="-1" aria-labelledby="foodHistoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="foodHistoryModalLabel">ประวัติการรับประทานอาหาร</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Table to show food and nutrition history -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>วันที่</th>
+                                <th>มื้ออาหาร</th>
+                                <th>เมนูอาหาร</th>
+                                <th>โปรตีน</th>
+                                <th>คาร์โบไฮเดรต</th>
+                                <th>ไขมัน</th>
+                                <th>พลังงาน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample row, you should replace this with dynamic data -->
+                            <tr>
+                                <td>2024-09-01</td>
+                                <td>มื้อเช้า</td>
+                                <td>ไข่เจียว</td>
+                                <td>10g</td>
+                                <td>20g</td>
+                                <td>15g</td>
+                                <td>250 kcal</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+</body>

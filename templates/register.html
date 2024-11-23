@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="login_container">
+        <div class="login_content">
+            <h1 id="register_text">สมัครสมาชิก</h1>
+            <form class="login_form" id="registerForm">
+                <input placeholder="ชื่อผู้ใช้งาน" type="text" id="reg_username" name="username" required>
+                <input placeholder="รหัสผ่าน" type="password" id="reg_password" name="password" required>
+                <input placeholder="ยืนยันรหัสผ่าน" type="password" id="confirm_password" name="confirm_password" required>
+
+                <button type="submit" id="register_btn">ดำเนินการต่อ</button>
+            </form>
+
+            <h1 id="register_text2">ข้อมูลส่วนตัว</h1>
+            <form class="login_form" id="registerForm2">
+                <div class="input_group">
+                    <div class="dropdown" id="prefixDropdown">
+                        <button class="dropdown__btn">
+                            เลือกคำนำหน้า
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown__list">
+                            <li class="dropdown__item" data-value="เด็กหญิง">เด็กหญิง</li>
+                            <li class="dropdown__item" data-value="เด็กชาย">เด็กชาย</li>
+                            <li class="dropdown__item" data-value="นาย">นาย</li>
+                            <li class="dropdown__item" data-value="นางสาว">นางสาว</li>
+                            <li class="dropdown__item" data-value="นาง">นาง</li>
+                        </ul>
+                        <input type="hidden" id="prefix" name="prefix" required>
+                    </div>
+                    <input style="width: 90%;" placeholder="ชื่อ" type="text" id="first_name" name="first_name" required>
+                </div>
+
+                <input placeholder="นามสกุล" type="text" id="last_name" name="last_name" required>
+
+                <div class="input_group">
+                    <input placeholder="อายุ" type="number" id="age" name="age" required>
+                    <input placeholder="ช่วงอายุ" type="text" id="age_group" name="age_group" readonly>
+                </div>
+
+                <div class="input_group">
+                    <div style="width: 100%;" class="dropdown" id="religionDropdown">
+                        <button class="dropdown__btn">
+                            เลือกศาสนา
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown__list">
+                            <li class="dropdown__item" data-value="พุทธ">พุทธ</li>
+                            <li class="dropdown__item" data-value="คริสต์">คริสต์</li>
+                            <li class="dropdown__item" data-value="อิสลาม">อิสลาม</li>
+                        </ul>
+                        <input type="hidden" id="religion" name="religion" required>
+                    </div>
+                    <div class="dropdown" id="genderDropdown">
+                        <button style="width: 100%;" class="dropdown__btn">
+                            เลือกเพศ
+                            <i class="fa-solid fa-chevron-down"></i> 
+                        </button>
+                        <ul class="dropdown__list">
+                            <li class="dropdown__item" data-value="ชาย">ชาย</li>
+                            <li class="dropdown__item" data-value="หญิง">หญิง</li>
+                            <li class="dropdown__item" data-value="อื่นๆ">อื่นๆ</li>
+                        </ul>
+                        <input type="hidden" id="gender" name="gender" required>
+                    </div>
+                </div>
+
+                <div class="input_group">
+                    <input placeholder="ส่วนสูง (เซนติเมตร)" type="number" id="height" name="height" required>
+                    <input placeholder="น้ำหนัก (กิโลกรัม)" type="number" id="weight" name="weight" required>
+                </div>
+
+                <input placeholder="BMI" type="text" id="bmi" name="bmi" readonly>
+
+                <button type="submit" id="register_btn2">ดำเนินการต่อ</button>
+            </form>
+
+            <h1 id="register_text3" style="font-size: 2rem;">คุณเคยมีประวัติการแพ้อาหารหรือไม่?</h1>
+            <form class="login_form" id="registerForm3">
+                <div class="input_group">
+                    <button style="background-color: rgb(216, 42, 42);" type="submit" id="no_btn">ไม่</button>
+                    <button style="background-color: rgb(41, 182, 95);" type="submit" id="yes_btn">ใช่</button>
+                </div>
+            </form>
+
+            <h1 id="register_text4">ประวัติการแพ้อาหาร</h1>
+            <h3 id="register_text5" class="kanit-medium" style="text-align: center; color: #666; margin-bottom: 20px;">กรุณาเลือกอาหารที่แพ้</h3>
+            <form class="login_form" id="registerForm4">
+                <div style="flex-direction: column; align-items: start; margin-bottom: 20px;" class="input_group">
+                    <h4>เนื้อสัตว์</h4>
+                    <div class="checkbox_list">
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="beef" name="beef">
+                            <label for="beef">เนื้อวัว</label>
+                        </div>
+                        
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="pork" name="pork">
+                            <label for="pork">เนื้อหมู</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="chicken" name="chicken">
+                            <label for="chicken">เนื้อไก่</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="duck" name="duck">
+                            <label for="duck">เนื้อเป็ด</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="flex-direction: column; align-items: start;  margin-bottom: 20px;" class="input_group">
+                    <h4>อาหารทะเล</h4>
+                    <div class="checkbox_list">
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="shrimp" name="shrimp">
+                            <label for="shrimp">กุ้ง</label>
+                        </div>
+                        
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="squid" name="squid">
+                            <label for="squid">หมึก</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="fish" name="fish">
+                            <label for="fish">ปลา</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="shell" name="shell">
+                            <label for="shell">หอย</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="crab" name="crab">
+                            <label for="crab">ปู</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="flex-direction: column; align-items: start;  margin-bottom: 20px;" class="input_group">
+                    <h4>อื่น ๆ</h4>
+                    <div class="checkbox_list">
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="been" name="been">
+                            <label for="been">ถั่ว</label>
+                        </div>
+                        
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="powder" name="powder">
+                            <label for="powder">แป้งสาลี</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="gluten" name="gluten">
+                            <label for="gluten">กลูเตน</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="egg" name="egg">
+                            <label for="egg">ไข่</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="milk" name="milk">
+                            <label for="milk">นม</label>
+                        </div>
+
+                        <div class="checkbox_group">
+                            <input type="checkbox" id="yeast" name="yeast">
+                            <label for="yeast">ยีสต์</label>
+                        </div>
+                    </div>
+                </div>
+
+                <input style="margin-bottom: 26px;" placeholder="นอกเหนือที่กล่าวมาข้างต้น (หากมีเยอะให้ใส่ , คั่น)" type="text" id="other" name="other">
+                <button type="submit" id="register_btn">บันทึกข้อมูลการสมัครสมาชิก</button>
+            </form>
+
+            <h1 id="register_text6" style="font-size: 2rem;">สมัครสมาชิกเสร็จสิ้น!</h1>
+            <h3 id="register_text7" class="kanit-medium" style="text-align: center; color: #666; margin-bottom: 20px;">กรุณาเข้าสู่ระบบ เพื่อดูเมนูอาหาร</h3>
+            <a id="register_text8" href="{{ url_for('main.login') }}" class="register_link" style="text-align:center">คลิกที่นี่เพื่อเข้าสู่ระบบ</a>
+            
+        </div>
+  </div>
+{% endblock %}

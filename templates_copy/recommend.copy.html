@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <h2>แนะนำเมนูอาหาร</h2>
+
+        <!-- Form to select ingredients, food types, food categories, and meal times -->
+        <form id="recommendForm">
+            <div class="mb-3">
+                <label for="ingredients" class="form-label">เลือกวัตถุดิบที่ชอบ:</label>
+                <select multiple class="form-select" id="ingredients">
+                    <option value="ingredient1">หมู</option>
+                    <option value="ingredient2">ไก่</option>
+                    <option value="ingredient3">ทะเล</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="foodType" class="form-label">ประเภทอาหารที่อยากทาน:</label>
+                <select class="form-select" id="foodType">
+                    <option value="type1">เนื้อสัตว์</option>
+                    <option value="type2">ผัก</option>
+                    <option value="type3">ข้าว</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="foodCategory" class="form-label">ชนิดอาหารที่อยากทาน:</label>
+                <select class="form-select" id="foodCategory">
+                    <option value="category1">ยำ</option>
+                    <option value="category2">ผัด</option>
+                    <option value="category3">แกง</option>
+                    <option value="category4">น้ำพริก</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="mealTime" class="form-label">เลือกมื้ออาหาร:</label>
+                <select class="form-select" id="mealTime">
+                    <option value="breakfast">มื้อเช้า</option>
+                    <option value="lunch">มื้อกลางวัน</option>
+                    <option value="dinner">มื้อเย็น</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="getRecommendations">แนะนำเมนูอาหาร</button>
+        </form>
+
+        <!-- Recommendations Section -->
+        <div id="recommendations" class="mt-5 d-none">
+            <h3>เมนูอาหารที่แนะนำ</h3>
+            <div id="menuList" class="row">
+                <!-- Recommended menu items will be dynamically added here -->
+            </div>
+            <button type="button" class="btn btn-success mt-3" id="confirmSelection">ยืนยันการเลือก</button>
+        </div>
+    </div>
+
+    <!-- Modal for summary -->
+    <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="summaryModalLabel">สรุปรายการอาหารที่เลือก</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Summary of selected food items will be dynamically added here -->
+                    <ul id="selectedItemsList" class="list-group">
+                        <!-- Selected items will be dynamically added here -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('getRecommendations').addEventListener('click', function() {
+            // Get selected values from the form
+            const ingredients = Array.from(document.getElementById('ingredients').selectedOptions).map(option => option.value);
+            const foodType = document.getElementById('foodType').value;
+            const foodCategory = document.getElementById('foodCategory').value;
+            const mealTime = document.getElementById('mealTime').value;
+
+            // Simulated recommended menu items based on selections
+            var menuList = document.getElementById('menuList');
+            menuList.innerHTML = `
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image1.jpg') }}" class="card-img-top" alt="Menu 1">
+                        <div class="card-body">
+                            <h5 class="card-title">เมนู 1</h5>
+                            <p class="card-text">โปรตีน: 15g | คาร์โบไฮเดรต: 30g | ไขมัน: 10g | พลังงาน: 250 kcal</p>
+                            <input type="checkbox" class="menu-checkbox" value="เมนู 1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image2.jpg') }}" class="card-img-top" alt="Menu 2">
+                        <div class="card-body">
+                            <h5 class="card-title">เมนู 2</h5>
+                            <p class="card-text">โปรตีน: 20g | คาร์โบไฮเดรต: 40g | ไขมัน: 15g | พลังงาน: 300 kcal</p>
+                            <input type="checkbox" class="menu-checkbox" value="เมนู 2">
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more recommended menu items as needed -->
+            `;
+            document.getElementById('recommendations').classList.remove('d-none');
+        });
+
+        document.getElementById('confirmSelection').addEventListener('click', function() {
+            var selectedItems = document.querySelectorAll('.menu-checkbox:checked');
+            var selectedItemsList = document.getElementById('selectedItemsList');
+            selectedItemsList.innerHTML = '';
+
+            selectedItems.forEach(function(item) {
+                var listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = item.value;
+                selectedItemsList.appendChild(listItem);
+            });
+
+            var summaryModal = new bootstrap.Modal(document.getElementById('summaryModal'));
+            summaryModal.show();
+        });
+    </script>
+    {% endblock %}
+</body>

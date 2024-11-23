@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="login_container">
+        <div class="login_content">
+            <h1>Menus Recommending</h1>
+
+            <form class="login_form" id="loginForm">
+                <input placeholder="ชื่อผู้ใช้งาน" type="text" id="username" name="username" required>
+                <input placeholder="รหัสผ่าน" type="password" id="password" name="password" required>
+
+                <button type="submit" id="login_btn">เข้าสู่ระบบ</button>
+            </form>
+            
+            <a href="{{ url_for('main.register') }}" class="register_link">ยังไม่ได้สมัครสมาชิก? คลิกที่นี่เพื่อสมัคร</a>
+        </div>
+  </div>
+{% endblock %}

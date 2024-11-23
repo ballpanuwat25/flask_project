@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block content %}
+        <div class="detail_container">
+            <h1 style="margin-bottom: 20px;">{{data.text}}</h1>
+
+            <div class="detail_content" style="width: fit-content;">
+                <h2>ชื่อเมนู: {{data.food_name}}</h2>
+                <div class="detail_block">
+                    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="profile_image">
+                            <img src="{{ url_for('static', filename='image3.jpg') }}" alt="Image 4">
+                        </div>
+                    </div>
+                    <div class="detail_info">
+                        <h3 style="margin-bottom: 10px;">สารอาหารที่ได้รับ</h3>
+                        <ul>
+                            <li>โปรตีน: {{data.protein}} กรัม (g)</li>
+                            <li>คาร์โบไฮเดรต: {{data.carbohydrate}} กรัม (g)</li>
+                            <li>ไขมัน: {{data.fat}} กรัม (g)</li>
+                            <li>คอเลสเตอรอล: {{data.colestrol}} มิลลิกรัม (mg)</li>
+                            <li>โซเดียม: {{data.sodium}} มิลลิกรัม (mg)</li>
+                            <li>น้ำตาล: {{data.sugar}} กรัม (g)</li>
+                            <li>ใยอาหาร: {{data.fiber}} กรัม (g)</li>
+                            <li>แคลอรี่: {{data.calories}} กิโลแคลอรี่ (kcal)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button id="food_save_btn" style="width: 100%;" class="profile_save_btn">บันทึกข้อมูล</button>
+            </div>
+        </div>
+    {% endblock %}
+</body>
