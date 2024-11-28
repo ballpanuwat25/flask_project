@@ -512,7 +512,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    /* gap: 10px; */
 
     /* overflow-y: scroll; */
 }
@@ -526,7 +526,7 @@ body {
     border-radius: 10px;
     /* background-color: #3168ff; */
 
-    border: 2px solid #ccc;
+    /* border: 2px solid #ccc; */
 }
 
 .history_filter {
@@ -537,6 +537,16 @@ body {
     gap: 10px;
 
     margin-bottom: 20px;
+}
+
+.history_group {
+    padding: 10px; 
+    border: 2px solid #ccc; 
+    border-radius: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 /* history page-------------------------------------------------------------- */

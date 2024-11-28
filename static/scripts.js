@@ -889,18 +889,38 @@ function renderOrderDropdown() {
 }
 
 function renderHistoryRow(data) {
-    let html = "";
+    // console.log("data", data);
+    let html_obj = {};
     data.forEach((item) => {
-        html += `
-            <div class="history_row">
+        let date = formatDate(item.created_at);
+        date = date.split(",")[0];
+        html_obj[date] = {
+            html: html_obj[date] ? html_obj[date].html : ""
+        }
+
+        html_obj[date].html +=
+        `<div class="history_row">
+            <div style="display: flex; align-items: center; gap: 20px">
+                <img src="/static/${item.food_image}" alt="${item.food_name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                 <div>
                     <p>วันที่: ${formatDate(item.created_at)}</p>
                     <p>เมนู: ${item.food_name}</p>
+                    <p>แคลอรี่: ${item.calories} kcal</p>
                 </div>
-                <a style="color: #3168ff; text-decoration: none;" href="/food_detail/${item.food_id}?mode=view">ดูเพิ่มเติม</a>
+            </div>
+            <a style="color: #3168ff; text-decoration: none;" href="/food_detail/${item.food_id}?mode=view">ดูเพิ่มเติม</a>
+        </div>`
+    });
+
+    let html = "";
+    for (const [key, value] of Object.entries(html_obj)) {
+        html_obj[key] = value.html;
+        html += `
+            <div class="history_group">
+                ${html_obj[key]}
             </div>
         `;
-    });
+    }
 
     return html;
 }

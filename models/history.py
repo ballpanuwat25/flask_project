@@ -30,6 +30,7 @@ class History(db.Model):
             'sugar': self.food.sugar if self.food else None,
             'food_type': self.food.food_type if self.food else None,
             'food_category': self.food.food_category if self.food else None,
+            'food_image': self.food.food_image if self.food else None,
             'calories': self.food.calories if self.food else None,
             'created_at': self.created_at,
             'updated_at': self.updated_at
