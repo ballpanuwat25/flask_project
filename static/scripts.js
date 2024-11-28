@@ -1110,6 +1110,8 @@ function renderProfileForm(data) {
     let imagePath= "";
     if(!data.profile_picture){
         imagePath = `/static/image4.jpg`;
+    } else {
+        imagePath = `/static/uploads/${data.profile_picture}`
     }
 
     let html = `
