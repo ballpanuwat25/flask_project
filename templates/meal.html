@@ -5,7 +5,7 @@
         <div class="detail_container">
             <h1 style="margin-bottom: 20px;">เลือกมื้ออาหาร</h1>
 
-            <div class="detail_content" style="max-width: 1200px">
+            <div class="detail_content" style="width: 100%">
                 <div class="meal_box">
                     <div class="meal_col" style="border-right: 2px solid #ccc;">
                         <p class="column_text">มื้ออาหาร</p>
@@ -33,7 +33,7 @@
                             <input type="hidden" id="food_category3" name="food_category" required>
                         </div>
                     </div>
-                    <div class="meal_col">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
                         <p class="column_text">เมนูอาหาร</p>
                         <div class="dropdown" id="foodMenu">
                             <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
@@ -42,6 +42,29 @@
                             </button>
                             <ul class="dropdown__list" id="ul_foodMenu"></ul>
                             <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">ข้าว</p>
+                        <div style="display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 0 20px;">
+                            <div class="dropdown" id="rice_list1">
+                                <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                    <p style='font-family: "Kanit", serif;'>ข้าว</p>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown__list">
+                                    <li class="dropdown__item" data-value="ข้าวสวย">ข้าวสวย</li>
+                                    <li class="dropdown__item" data-value="ข้าวเหนียว">ข้าวเหนียว</li>
+                                    <li class="dropdown__item" data-value="ข้าวกล้อง">ข้าวกล้อง</li>
+                                    <li class="dropdown__item" data-value="ขนมจีน">ขนมจีน</li>
+                                    <li class="dropdown__item" data-value="เส้นหมี่">เส้นหมี่</li>
+                                    <li class="dropdown__item" data-value="ขนมปัง">ขนมปัง</li>
+                                </ul>
+                                <input type="hidden" id="input_rice_list1" name="food_menu" required>
+                            </div>
+                            <div class="login_form">
+                                <input style="margin: 0; height: 45px;" type="text" id="rice_amount1" name="rice_amount" placeholder="จำนวน" required>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +95,7 @@
                             <input type="hidden" id="food_category3" name="food_category" required>
                         </div>
                     </div>
-                    <div class="meal_col">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
                         <p class="column_text">เมนูอาหาร</p>
                         <div class="dropdown" id="foodMenu2">
                             <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
@@ -81,6 +104,29 @@
                             </button>
                             <ul class="dropdown__list" id="ul_foodMenu2"></ul>
                             <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">ข้าว</p>
+                        <div style="display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 0 20px;">
+                            <div class="dropdown" id="rice_list2">
+                                <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                    <p style='font-family: "Kanit", serif;'>ข้าว</p>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown__list">
+                                    <li class="dropdown__item" data-value="ข้าวสวย">ข้าวสวย</li>
+                                    <li class="dropdown__item" data-value="ข้าวเหนียว">ข้าวเหนียว</li>
+                                    <li class="dropdown__item" data-value="ข้าวกล้อง">ข้าวกล้อง</li>
+                                    <li class="dropdown__item" data-value="ขนมจีน">ขนมจีน</li>
+                                    <li class="dropdown__item" data-value="เส้นหมี่">เส้นหมี่</li>
+                                    <li class="dropdown__item" data-value="ขนมปัง">ขนมปัง</li>
+                                </ul>
+                                <input type="hidden" id="input_rice_list2" name="food_menu" required>
+                            </div>
+                            <div class="login_form">
+                                <input style="margin: 0; height: 45px;" type="text" id="rice_amount2" name="rice_amount" placeholder="จำนวน" required>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +157,7 @@
                             <input type="hidden" id="food_category3" name="food_category" required>
                         </div>
                     </div>
-                    <div class="meal_col">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
                         <p class="column_text">เมนูอาหาร</p>
                         <div class="dropdown" id="foodMenu3">
                             <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
@@ -120,6 +166,29 @@
                             </button>
                             <ul class="dropdown__list" id="ul_foodMenu3"></ul>
                             <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">ข้าว</p>
+                        <div style="display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 0 20px;">
+                            <div class="dropdown" id="rice_list3">
+                                <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                    <p style='font-family: "Kanit", serif;'>ข้าว</p>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown__list">
+                                    <li class="dropdown__item" data-value="ข้าวสวย">ข้าวสวย</li>
+                                    <li class="dropdown__item" data-value="ข้าวเหนียว">ข้าวเหนียว</li>
+                                    <li class="dropdown__item" data-value="ข้าวกล้อง">ข้าวกล้อง</li>
+                                    <li class="dropdown__item" data-value="ขนมจีน">ขนมจีน</li>
+                                    <li class="dropdown__item" data-value="เส้นหมี่">เส้นหมี่</li>
+                                    <li class="dropdown__item" data-value="ขนมปัง">ขนมปัง</li>
+                                </ul>
+                                <input type="hidden" id="input_rice_list3" name="food_menu" required>
+                            </div>
+                            <div class="login_form">
+                                <input style="margin: 0; height: 45px;" type="text" id="rice_amount3" name="rice_amount" placeholder="จำนวน" required>
+                            </div>
                         </div>
                     </div>
                 </div>

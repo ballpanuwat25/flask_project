@@ -352,6 +352,10 @@ let food_ingredient = {
     ]
 }
 
+let temp_rice = "";
+let temp_rice2 = "";
+let temp_rice3 = "";
+
 $(document).ready(function() {
     checkLoginStatus();
 
@@ -1972,6 +1976,89 @@ async function renderMealSelectionPage() {
             }
         }
     });
+
+    renderRiceDropdown();
+    renderRiceDropdown2();
+    renderRiceDropdown3();
+
+    async function loadFoodList() {
+        try {
+            const result = await $.ajax({
+                url: '/getfoodlist',
+                type: 'GET'
+            });
+            return result; // คืนค่าข้อมูลกลับมา
+        } catch (err) {
+            return [];
+        }
+    }
+    
+    // เริ่มต้นการทำงาน
+    (async function () {
+        const temp_food_list = await loadFoodList(); // รอข้อมูลโหลดเสร็จ
+    
+        // ตรวจสอบว่า food list มีข้อมูลก่อนตั้งค่า onchange
+        if (temp_food_list.length === 0) {
+            console.warn("Food list is empty, cannot bind onchange.");
+            return;
+        }
+    
+        // ตั้งค่า onchange ให้กับ #rice_amount1
+        $('#rice_amount1').on('change', function () {
+            let rice_amount = parseInt($('#rice_amount1').val(), 10); // แปลงเป็นตัวเลข
+            if (isNaN(rice_amount)) {
+                console.error("Invalid rice amount");
+                return;
+            }
+    
+            // วนลูป temp_food_list
+            for (let i = 0; i < temp_food_list.length; i++) {
+                const item = temp_food_list[i];
+    
+                if (temp_rice === item.food_name) {
+                    for (let j = 0; j < rice_amount; j++) {
+                        insert_history_arr.push(item.id);
+                    }
+                }
+            }
+        });
+        $('#rice_amount2').on('change', function () {
+            let rice_amount = parseInt($('#rice_amount2').val(), 10); // แปลงเป็นตัวเลข
+            if (isNaN(rice_amount)) {
+                console.error("Invalid rice amount");
+                return;
+            }
+    
+            // วนลูป temp_food_list
+            for (let i = 0; i < temp_food_list.length; i++) {
+                const item = temp_food_list[i];
+    
+                if (temp_rice2 === item.food_name) {
+                    for (let j = 0; j < rice_amount; j++) {
+                        insert_history_arr.push(item.id);
+                    }
+                }
+            }
+        });
+        $('#rice_amount3').on('change', function () {
+            let rice_amount = parseInt($('#rice_amount3').val(), 10); // แปลงเป็นตัวเลข
+            if (isNaN(rice_amount)) {
+                console.error("Invalid rice amount");
+                return;
+            }
+    
+            // วนลูป temp_food_list
+            for (let i = 0; i < temp_food_list.length; i++) {
+                const item = temp_food_list[i];
+    
+                if (temp_rice3 === item.food_name) {
+                    for (let j = 0; j < rice_amount; j++) {
+                        insert_history_arr.push(item.id);
+                    }
+                }
+            }
+        });
+    })();
 }
 
 // โหลดรายการอาหารและอัปเดต ul_foodMenu
@@ -2227,4 +2314,94 @@ function renderDropdownMenuList(filter_data) {
         `;
     }
     return html;
+}
+
+function renderRiceDropdown() {
+    const dropdown = $('#rice_list1');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle the dropdown when button is clicked
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // Set the selected value and close the dropdown when an item is clicked
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Set the hidden input value
+        dropdown.removeClass('open'); // Close the dropdown
+
+        temp_rice = selectedValue;
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderRiceDropdown2() {
+    const dropdown = $('#rice_list2');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle the dropdown when button is clicked
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // Set the selected value and close the dropdown when an item is clicked
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Set the hidden input value
+        dropdown.removeClass('open'); // Close the dropdown
+
+        temp_rice2 = selectedValue;
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderRiceDropdown3() {
+    const dropdown = $('#rice_list3');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle the dropdown when button is clicked
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // Set the selected value and close the dropdown when an item is clicked
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Set the hidden input value
+        dropdown.removeClass('open'); // Close the dropdown
+
+        temp_rice3 = selectedValue;
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
 }
