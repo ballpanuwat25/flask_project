@@ -1234,7 +1234,8 @@ function renderHistoryRow(data) {
         let date = formatDate(item.created_at);
         date = date.split(",")[0];
         html_obj[date] = {
-            html: html_obj[date] ? html_obj[date].html : ""
+            html: html_obj[date] ? html_obj[date].html : "",
+            calories: html_obj[date] ? html_obj[date].calories : 0
         }
 
         html_obj[date].html +=
@@ -1249,13 +1250,20 @@ function renderHistoryRow(data) {
             </div>
             <a style="color: #3168ff; text-decoration: none;" href="/food_detail/${item.food_id}?mode=view">ดูเพิ่มเติม</a>
         </div>`
+
+        html_obj[date].calories += item.calories;
     });
 
     let html = "";
     for (const [key, value] of Object.entries(html_obj)) {
         html_obj[key] = value.html;
+
         html += `
             <div class="history_group">
+                <div style="display: flex;justify-content: space-between;padding: 10px 10px 0 10px;align-items: center;">
+                    <h3>วันที่: ${key}</h3>
+                    <p>พลังงานที่ได้รับ ${value.calories} kcal</p>
+                </div>
                 ${html_obj[key]}
             </div>
         `;
