@@ -52,6 +52,14 @@ def food_detail(id):
 
     return render_template("food_detail.html", data=data)
 
+@main.route('/suggest', methods=['GET'])
+def food_suggest():
+    return render_template("suggest.html")
+
+@main.route('/meal', methods=['GET'])
+def meal():
+    return render_template("meal.html")
+
 #backend routes----------------------------------------------------------------
 
 #ส่งข้อมูลไปหน้าบ้าน

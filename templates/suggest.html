@@ -3,11 +3,11 @@
 <body>
     {% block content %}
         <div class="history_container">
-            <h1 style="margin-bottom: 20px;">เมนูทั้งหมด</h1>
+            <h1 style="margin-bottom: 20px;">แนะนำเมนูอาหาร</h1>
             
             <div class="history_filter">
                 <!-- <label for="filter" style="color: #999;">ตัวกรอง</label> -->
-                <div class="dropdown" id="foodType">
+                <div class="dropdown" id="foodType2">
                     <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodType">
                         <p style='font-family: "Kanit", serif;'>เลือกวัตถุดิบ</p>
                         <i class="fa-solid fa-chevron-down"></i>
@@ -22,10 +22,10 @@
                         <li class="dropdown__item" data-value="เส้น">เส้น</li>
                         <li class="dropdown__item" data-value="ไข่">ไข่</li>
                     </ul>
-                    <input type="hidden" id="food_type" name="food_type" required>
+                    <input type="hidden" id="food_type2" name="food_type" required>
                 </div>
 
-                <div class="dropdown" id="foodCategory">
+                <div class="dropdown" id="foodCategory2">
                     <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
                         <p style='font-family: "Kanit", serif;'>เลือกประเภทอาหาร</p>
                         <i class="fa-solid fa-chevron-down"></i>
@@ -42,11 +42,11 @@
                         <li class="dropdown__item" data-value="ย่าง">ย่าง</li>
                         <li class="dropdown__item" data-value="ทอด">ทอด</li>
                     </ul>
-                    <input type="hidden" id="food_category" name="food_category" required>
+                    <input type="hidden" id="food_category2" name="food_category" required>
                 </div>
             </div>
 
-            <div class="food_content" id="food_content"></div>
+            <div class="food_content" id="food_suggest"></div>
         </div>
     {% endblock %}
 </body>

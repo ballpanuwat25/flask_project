@@ -422,6 +422,10 @@ body {
     font-size: 16px;
 }
 
+.profile_save_btn:hover {
+    background-color: #555;
+}
+
 /* สไตล์สำหรับ container */
 .upload-container {
     width: 100%;
@@ -693,3 +697,31 @@ body {
 }
 
 /* index page-------------------------------------------------------------- */
+
+.meal_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 15px 0;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    width: 100%;
+}
+
+.meal_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.column_text {
+    border-bottom: 2px solid #ccc; 
+    width: 100%; 
+    text-align: center; 
+    padding-bottom: 15px;
+    margin-bottom: 4px;
+}

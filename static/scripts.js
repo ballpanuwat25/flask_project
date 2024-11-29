@@ -23,6 +23,335 @@ let food_filter = {
     food_category: ""
 }
 
+let insert_history_arr = [];
+
+let food_ingredient = {
+    "เนื้อหมู": [
+        "น้ำพริกอ่อง",
+        "น้ำพริกมะขาม",
+        "ยำถั่วพู",
+        "โจ๊กข้าวกล้อง",
+        "ข้าวกล้องผัดรวมมิตร",
+        "ข้าวกล้องผัดน้ำพริกปลา",
+        "แกงขี้เหล็ก",
+        "ยำยอดคะน้า",
+        "ยำผักกระเฉด",
+        "แกงจืดเต้าหู้",
+        "ผัดเต้าหู้ถั่วงอก",
+        "ก๋วยเตี๋ยวราดหน้า",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "ยำยอดมะระหวาน",
+        "ยำผักหวาน",
+        "ยำผักกูด",
+        "ยำใบชะพลู",
+        "ยำยอดกระถิน",
+        "เมี่ยงคะน้า",
+        "เกาเหลาเลือดหมู",
+        "แกงจืดตำลึงใส่ตับ",
+        "แกงจืดตำลึงเต้าหู้อ่อน",
+        "ขนมจีนน้ำเงี้ยว",
+        "ข้าวกับจิ้น",
+        "ลาบหมู",
+        "ลาบคั่ว",
+        "ผัดผักกระเฉด",
+        "ผัดบล็อดโคลี่",
+        "แกงเหลืองหมูฟักทอง",
+        "โจ๊กหมูเครื่องในใส่ไข่",
+        "ก๋วยจั๊บ",
+        "ข้าวผัดบ้านมุก",
+        "ข้าวผัดรวมมิตร",
+        "ไข่ฟูหมูสับ",
+        "ก๋วยเตี๋ยวเครื่องใน",
+        "ก๋วยเตี๋ยวรวมมิตร",
+        "เส้นเล็กแห้ง",
+        "ก๋วยเตี๋ยวต้มยำ",
+        "ก๋วยเตี๋ยวราดหน้าหมูตับ",
+        "ผัดเปรี้ยวหวานตับ",
+        "ผัดถั่วงอกเลือดหมูตับหมู",
+        "ผัดเผ็ดถั่วฝักยาวใส่ตับ",
+        "เกี๊ยวปลา",
+        "ก๋วยเตี๋ยวลูกชิ้นปลา",
+        "ข้าต้มปลา",
+        "แกงจืดมะระยัดไส้",
+        "ข้าวต้มเบญจรงค์",
+        "ต้มจืดวุ้นเส้น",
+        "ยำมะระ",
+        "สุกี้น้ำ",
+        "ข้าวคลุกกะปิ"
+    ],
+    "เนื้อไก่": [
+        "ข้าวกล้องผัดรวมมิตร",
+        "ยำหัวปลีไก่",
+        "ยำหัวปลีทรงเครื่อง",
+        "แกงแคไก่",
+        "ต้มไก่บ้านใบมะขามอ่อน",
+        "แกงป่าไก่",
+        "แกงอ่อมไก่",
+        "แกงเขียวหวานไก่",
+        "ขนมจีนน้ำเงี้ยว",
+        "ข้าวผัดกระเพราไก่ใส่ตับ",
+        "ข้าวผัดพริกไก่กับเครื่องในไข่ดาว",
+        "ลาบไก่",
+        "ก๋วยเตี๋ยวไก่มะระ",
+        "ก๋วยเตี๋ยวคุกคิก",
+        "ก๋วยเตี๋ยวรวมมิตร",
+        "ก๋วยเตี๋ยวชากังราว",
+        "ตับบด",
+        "ผัดฟักทองตับ",
+        "แกงป่าสมุนไพร",
+        "ไก่ต้มฟักมะนาวดอง",
+        "ก๋วยเตี๋ยวไก่ตุ๋น",
+        "ก๋วยเตี๋ยวเป็ดน้ำ"
+    ],
+    "เนื้อวัว": [
+        "ลาบวัว",
+        "ก๋วยเตี๋ยวเนื้อตุ๋น"
+    ],
+    "เนื้อเป็ด": [
+        "ลาบเป็ด",
+        "ก๋วยเตี๋ยวเป็ดน้ำ"
+    ],
+    "กุ้ง": [
+        "ข้าวยำปักษ์ใต้",
+        "ยำสมุนไพร",
+        "ยำตะไคร้",
+        "ยำตะไคร้กุ้งสด",
+        "ยำตะไคร้กุ้งกรอบ",
+        "น้ำพริกขยำ",
+        "น้ำพริกกุ้งเสียบ",
+        "นำพริกมะขาม",
+        "น้ำพริกกุ้งสด",
+        "น้ำพริกลงเรือ",
+        "กุ้งพล่า",
+        "ยำถั่วพู",
+        "ข้าวกล้องผัดรวมมิตร",
+        "ข้าวผัดเบญจรงค์",
+        "ยำหัวปลีไก่",
+        "ยำหัวปลีกุ้งสด",
+        "ยำ3อย่าง",
+        "ยำหัวปลีทรงเครื่อง",
+        "แกงเลียง",
+        "ยำยอดคะน้า",
+        "ยำผัดกระเฉด",
+        "ข้าวคลุกกะปิ",
+        "แกงส้มผักกระเฉด",
+        "แกงส้มดอกแค",
+        "แกงส้มผักรวม",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "ยำผักหวาน",
+        "ยำผักกูด",
+        "ยำใบบัวบก",
+        "ยำใบชะพลู",
+        "ยำยอดกระถิน",
+        "แกงส้มรวมมิตร",
+        "แกงส้มดอกแคกุ้งสด",
+        "น้ำพริกกุ้งผักสด",
+        "ยำส้มโอ",
+        "ยำมะระ",
+        "ต้มยำกุ้ง",
+        "ข้าวต้มกุ้ง",
+        "เกี๊ยวปลา",
+        "ก๋วยเตี๋ยวทะเล",
+        "ยำสมุนไพรครัวข้าวหอม"
+    ],
+    "หมึก": [
+        "ยำสมุนไพร",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "ก๋วยเตี๋ยวรวมมิตร",
+        "ก๋วยเตี๋ยวทะเล",
+    ],
+    "ปลา": [
+        "น้ำพริกหนุ่ม",
+        "น้ำพริกปลา",
+        "น้ำพริกอีสาน",
+        "ข้าวกล้องผัดน้ำพริกปลา",
+        "ข้าวกล้องผัดน้ำพริกปลาร้า",
+        "ขนมจีนน้ำยาป่า",
+        "ขนมจีนน้ำยาปักษ์ใต้",
+        "ขนมจีนแกงป่า",
+        "แกงขี้เหล็ก",
+        "แกงป่าปลา",
+        "แกงอ่อมปลาดุก",
+        "แกงป่าปลาเห็ดโคน",
+        "ปลาช่อนนึ่งสมุนไพร",
+        "ปลาทับทิมสมุนไพร",
+        "ปลาช่อนนึ่งแจ๋ว",
+        "ปลาช่อนโบราณ",
+        "ปลาช่อนพล่า",
+        "ปลาช่อนเผาสมุนไพร",
+        "ปลาช่อนนึ่งอีสาน",
+        "ปลาช่อนแม่ลาเผา",
+        "น้ำพริกปลาทู",
+        "ยำปลาทู",
+        "น้ำพริกปลาร้า",
+        "ข้าวคลุกน้ำพริกปลาร้า",
+        "เมี่ยงปลาทู",
+        "แกงส้มชะอมปลากะพง",
+        "ปลาดุกผักฉ่า",
+        "ปลากะพงลวกจิ้ม",
+        "ปลากรายลวกจิ้ม",
+        "แกงส้มปลาช่อน",
+        "ต้มยำปลาช่อน",
+        "ปลาเนื้ออ่อนนึ่งแจ่ว",
+        "ลาบปลาดุก",
+        "ลาบปลาแรด",
+        "ก๋วยเตี๋ยวปลา",
+        "ปลาช่อนนึ่งสมุนไพร",
+        "ปลาอินทรีย์ย่าง",
+        "ปลาทับทิมนึ่งแจ่ว",
+        "น้ำพริกปลา",
+        "แกงเหลืองปลา",
+        "แกงส้มปลากะพง",
+        "เกาเหลาปลา",
+        "แกงอ่อมปลา",
+        "ก๋วยเตี๋ยวลูกชิ้นปลา",
+        "แกงไตปลา",
+        "เกี๊ยวปลา",
+        "ก๋วยเตี๋ยวราดหน้าปลา",
+        "ปลาทับทิมนึ่งซีอิ๊ว",
+        "ต้มปลานิลใส่ผัดติ้ว",
+        "ลาบปลา",
+        "ข้าต้มปลา",
+        "ปลากะพงนึ่งมะนาว",
+        "แกงหน่อไม้ใส่ใบย่านาง",
+        "ข้ามต้มเบญจรงค์",
+        "ก๋วยเตี๋ยวทะเล"
+    ],
+    "หอย": [
+        "แกงหอยใบชะพลู",
+        "แกงหอยขม"
+    ],
+    "ปู": [
+        "น้ำพริกปู"
+    ],
+    "ถั่ว": [
+        "ยำตะไคร้",
+        "ยำตะไคร้กุ้งสด",
+        "ยำตะไคร้กุ้งกรอบ",
+        "ยำถั่วพู",
+        "ข้าวผัดเบญจรงค์",
+        "ยำหัวปลีไก่",
+        "ยำหัวปลีกุ้งสด",
+        "ยำ3อย่าง",
+        "ยำหัวปลีทรงเครื่อง",
+        "แกงแคไก่",
+        "ปลาช่อนพล่า",
+        "ข้าวคลุกกะปิ",
+        "ผัดเต้าหู้ถั่วงอก",
+        "ยำใบชะพลู",
+        "เมี่ยงปลาทู",
+        "เมี่ยงคะน้า",
+        "เมี่ยงสมุนไพร",
+        "เส้นเล็กแห้ง",
+        "ก๋วยเตี๋ยวต้มยำ",
+        "ผัดถั่วงอกเลือดหมูตับหมู",
+        "ผัดเผ็ดถั่วฝักยาวใส่ตับ",
+        "แกงไตปลา",
+        "แกงส้มรวมมิตร",
+        "ยำมะระ",
+        "ยำส้มโอ"
+    ],
+    "แป้ง": [
+        "ปลาช่อนเผาสมุนไพร",
+        "ปลาช่อนแม่ลาเผา",
+        "ก๋วยเตี๋ยวราดหน้า",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "ปลาช่อนเผาสมุนไพร",
+        "ก๋วยเตี๋ยวราดหน้าปลา"
+    ],
+    "กลูเตน": [
+        "ข้าวยำปักษ์ใต้",
+        "ยำตะไคร้กุ้งกรอบ",
+        "ลาบเต้าหู้",
+        "โจ๊กข้าวกล้อง",
+        "ข้าวกล้องผัดรวมมิตร",
+        "ข้าวกล้องผัดน้ำพริกปลา",
+        "ข้าวกล้องผัดน้ำพริกปลาร้า",
+        "ข้าวผัดเบญจรงค์",
+        "ขนมจีนน้ำยาป่า",
+        "ขนมจีนน้ำยาปักษ์ใต้",
+        "ขนมจีนแกงป่า",
+        "ลาบเต้าหู้ทรงเครื่อง",
+        "ข้าวคลุกกะปิ",
+        "ข้าวคลุกน้ำพริกปลาร้า",
+        "เต้าหู้ทรงเครื่อง",
+        "แกงจืดเต้าหู้",
+        "ก๋วยเตี๋ยวเส้นหมี่เต้าหู้ทรงเครื่อง",
+        "เต้าหู้อบหม้อดิน",
+        "ผัดเต้าหู้ถั่วงอก",
+        "ก๋วยเตี๋ยวราดหน้า",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "ขนมจีนน้ำเงี้ยว",
+        "ข้าวกับจิ้น",
+        "ข้าวผัดกระเพราไก่ใส่ตับ",
+        "ข้าวผัดพริกไก่กับเครื่องในไข่ดาว",
+        "โจ๊กหมูเครื่องในใส่ไข่",
+        "ก๋วยจั๊บ",
+        "ข้าวผัดบ้านมุก",
+        "ข้าวผัดรวมมิตร",
+        "ก๋วยเตี๋ยวไก่มะระ",
+        "ก๋วยเตี๋ยวเครื่องใน",
+        "ก๋วยเตี๋ยวคุกคิก",
+        "ก๋วยเตี๋ยวรวมมิตร",
+        "ก๋วยเตี๋ยวชากังราว",
+        "เส้นเล็กแห้ง",
+        "ก๋วยเตี๋ยวราดหน้าหมูตับ",
+        "ซุปจมูกข้าวกล้อง",
+        "ก๋วยเตี๋ยวปลา",
+        "ก๋วยเตี๋ยวลูกชิ้นปลา",
+        "เกี๊ยวปลา",
+        "ก๋วยเตี๋ยวราดหน้าปลา",
+        "ข้าวต้มกุ้ง",
+        "ข้าวต้มเบญจรงค์",
+        "ต้มจืดวุ้นเส้น",
+        "ก๋วยเตี๋ยวไก่ตุ๋น",
+        "ก๋วยเตี๋ยวทะเล",
+        "ก๋วยเตี๋ยวเนื้อตุ๋น",
+        "ก๋วยเตี๋ยวเป็ดน้ำ",
+        "ขนมจีนน้ำยาป่า",
+        "สุกี้น้ำ"
+    ],
+    "ไข่": [
+        "โจ๊กข้าวกล้อง",
+        "ข้าวกล้องผัดผักรวมมิตร",
+        "ข้าวกล้องผัดน้ำพริกปลาร้า",
+        "ยำหัวปลีไก่",
+        "ยำหัวปลีกุ้งสด",
+        "ยำ3อย่าง",
+        "ยำหัวปลีทรงเครื่อง",
+        "ข้าวคลุกกะปิ",
+        "เต้าหู้ทรงเครื่อง",
+        "แกงจืดเต้าหู้",
+        "ก๋วยเตี๋ยวเส้นหมี่เต้าหู้ทรงเครื่อง",
+        "เต้าหู้อบหม้อดิน",
+        "ผัดเต้าหู้ถั่วงอก",
+        "ก๋วยเตี๋ยวราดหน้ารวมมิตร",
+        "แกงจืดตำลึงใส่ตับ",
+        "แกงจืดตำลึงเต้าหู้อ่อน",
+        "ข้าวผัดพริกไก่กับเครื่องในไข่ดาว",
+        "แกงส้มชะอมปลากะพง",
+        "โจ๊กหมูเครื่องในใส่ไข่",
+        "ข้าวผัดบ้านมุก",
+        "ข้าวผัดรวมมิตร",
+        "ไข่ตุ๋นฟักทอง",
+        "ไข่ฟูหมูสับ",
+        "ไข่ทรงเครื่อง",
+        "ไข่ตุ๋นนมสด",
+        "ก๋วยเตี๋ยวต้มยำ",
+        "ก๋วยเตี๋ยวราดหน้าหมูตับ",
+        "ต้มจืดวุ้นเส้น",
+        "สุกี้น้ำ",
+        "ซุปไข่กับผัก"
+    ],
+    "นม": [
+        "ไข่ตุ๋นนมสด"
+    ],
+    "ยีสต์": [
+        "ผัดเต้าหู้ถั่วงอก",
+        "ลาบเต้าหู้ทรงเครื่อง"
+    ]
+}
+
 $(document).ready(function() {
     checkLoginStatus();
 
@@ -38,7 +367,17 @@ $(document).ready(function() {
     }
 
     renderFoodDetail();
+
     renderHomePage();
+
+    if(window.location.pathname == "/meal"){
+        renderMealSelectionPage();
+    }
+
+    if(window.location.pathname == "/suggest"){
+        renderSuggestPage();
+    }
+
 });
 
 function renderPrefixDropdown() {
@@ -1237,4 +1576,643 @@ function checkImageExists(imagePath) {
         img.onerror = () => resolve(false); // รูปโหลดไม่สำเร็จ
         img.src = imagePath;
     });
+}
+
+async function renderSuggestPage() {
+    let user_data = await getUserData();
+    let calories = findCalorisByUser(user_data);
+
+    let new_user_data = {
+        calories: calories,
+        religion: user_data.religion,
+        food_allergies: user_data.food_allergies
+    }
+
+    $.ajax({
+        url: '/getfoodlist',
+        type: 'GET'
+    }).then((result) => {
+        let filter_data = suggestFoodByUser(result, new_user_data);
+
+        let html = renderFoodRow(filter_data);
+        $('#food_suggest').html(html);
+    }).catch((err) => {
+        // alert(err.status);
+    });
+
+    renderFoodTypeDropdown2(new_user_data);
+    renderFoodCategoryDropdown2(new_user_data);
+
+    $('#his_submit_btn').on('click', function(e) {
+        e.preventDefault();
+        
+        if(insert_history_arr.length > 0){
+            for(let i = 0; i < insert_history_arr.length; i++){
+                let food_obj = {
+                    "food_id": insert_history_arr[i]
+                }
+    
+                $.ajax({
+                    url: '/addhistory',
+                    type: 'POST',
+                    data: food_obj
+                }).then((result) => {
+                    // alert(result.message);
+                    Toastify({
+                        text: result.message,
+                        duration: 1000,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"// สีพื้นหลัง
+                    }).showToast();
+                }).catch((err) => {
+                    // alert(err.status);
+                });
+            }
+        }
+    });
+}
+
+function suggestFoodByUser(data, user_data) {
+    // console.log("user_data", user_data);
+    //user_data ต้องมี calories, religion, อาหารที่แพ้
+
+    let user_allergy = user_data.food_allergies;
+
+    //array อาหารที่แพ้
+    if(user_allergy == ""){
+        user_allergy = [];
+    } else {
+        user_allergy = user_allergy.split(",");
+    }
+
+    let food_allergy_list = [];
+    for (let i = 0; i < user_allergy.length; i++) {
+        let trimmedAllergy = user_allergy[i].trim();  // Trim the space
+    
+        // Check if the trimmed key exists in the food_ingredient object
+        if (food_ingredient[trimmedAllergy]) {
+            food_allergy_list.push(food_ingredient[trimmedAllergy]);
+        }
+    }
+
+    let allergy_obj = {}
+    for (let i = 0; i < food_allergy_list.length; i++) {
+        const list = food_allergy_list[i];
+        
+        for (let j = 0; j < list.length; j++) {
+            const item = list[j];
+            allergy_obj[item] = item;
+        }
+    }
+
+    //เอาไปหาว่ากินอะไรไม่ได้บ้าง แล้วเอารายการอาหารที่กินไม่ได้ มาเช็คกับชื่อเมนู ถ้าชื่อเมนูมีในอาหารที่กินไม่ได้ ก็ continue
+
+    let new_data = [];
+    for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        let calories = item.calories;
+        let food_name = item.food_name;
+
+        if(food_name == allergy_obj[food_name]){
+            continue;
+        }
+
+        if(calories <= user_data.calories) {
+            new_data.push(item);
+        }
+    }
+
+    // console.log("new_data", new_data);
+
+    return new_data;
+}
+
+function findCalorisByUser(user_data) {
+    let calories = 0;
+    let height = user_data.height;
+    let weight = user_data.weight;
+    let gender = user_data.gender;
+    let age = user_data.age;
+
+    if(gender == "หญิง") {
+        if(age >= 1 && age <= 8) {
+            if(weight <= 12.5 && height <= 89.6) {
+                calories = 980;
+            } else if ((weight > 12.5 && weight <= 18.1) && (height > 89.6 && height <= 108.9)) {
+                calories = 1200;
+            } else if ((weight > 18.1 && weight <= 22.5) && (height > 108.9 && height <= 121)) {
+                calories = 1320;
+            } else {
+                calories = 1500;
+            }
+        } else if (age > 8 && age <= 18) {
+            if ((weight > 22.5 && weight <= 36.5) && (height > 121 && height <= 143.9)) {
+                calories = 1650;
+            } else if ((weight > 36.5 && weight <= 47.7) && (height > 143.9 && height <= 157.1)) {
+                calories = 1860;
+            } else if ((weight > 47.7 && weight <= 48.9) && (height > 157.1 && height <= 158.8)) {
+                calories = 1890;
+            } else {
+                calories = 2100;
+            }
+        } else if (age > 18 && age <= 30) {
+            if(weight <= 53 && height <= 160) {
+                calories = 1780;
+            } else {
+                calories = 2000;
+            }
+        } else if (age > 30 && age <= 50) {
+            if(weight <= 52.2 && height <= 157.6) {
+                calories = 1780;
+            } else {
+                calories = 2000;
+            }
+        } else if (age > 50 && age <= 60) {
+            if(weight <= 51.9 && height <= 156.5) {
+                calories = 1770;
+            } else {
+                calories = 1900;
+            }
+        } else if (age > 60 && age <= 70) {
+            if(weight <= 49.9 && height <= 153.5) {
+                calories = 1560;
+            } else {
+                calories = 1700;
+            }
+        } else if (age > 70) {
+            if(weight <= 48.5 && height <= 152) {
+                calories = 1540;
+            } else {
+                calories = 1600;
+            }
+        }
+    } else {
+        if(age >= 1 && age <= 8) {
+            if(weight <= 13.1 && height <= 90.8) {
+                calories = 1050;
+            } else if ((weight > 13.1 && weight <= 18.3) && (height > 90.8 && height <= 109.5)) {
+                calories = 1290;
+            } else if ((weight > 18.3 && weight <= 23) && (height > 109.5 && height <= 122.3)) {
+                calories = 1440;
+            } else {
+                calories = 1600;
+            }
+        } else if (age > 8 && age <= 18) {
+            if ((weight > 23 && weight <= 35.6) && (height > 121 && height <= 142.2)) {
+                calories = 1800;
+            } else if ((weight > 35.6 && weight <= 51.5) && (height > 142.2 && height <= 164.3)) {
+                calories = 2200;
+            } else if ((weight > 51.5 && weight <= 58.3) && (height > 164.3 && height <= 171.2)) {
+                calories = 2370;
+            } else {
+                calories = 2600;
+            }
+        } else if (age > 18 && age <= 30) {
+            if(weight <= 61.3 && height <= 170.8) {
+                calories = 2260;
+            } else {
+                calories = 2400;
+            }
+        } else if (age > 30 && age <= 50) {
+            if(weight <= 60.1 && height <= 169.2) {
+                calories = 2190;
+            } else {
+                calories = 2300;
+            }
+        } else if (age > 50 && age <= 60) {
+            if(weight <= 59.5 && height <= 167.8) {
+                calories = 2180;
+            } else {
+                calories = 2300;
+            }
+        } else if (age > 60 && age <= 70) {
+            if(weight <= 58.7 && height <= 165.1) {
+                calories = 1790;
+            } else {
+                calories = 1900;
+            }
+        } else if (age > 70) {
+            if(weight <= 56.2 && height <= 163.6) {
+                calories = 1740;
+            } else {
+                calories = 1800;
+            }
+        }
+    }
+
+    calories = (calories / 3).toFixed(2);
+
+    return calories;
+}
+
+async function getUserData() {
+    return new Promise((resolve) => {
+        $.ajax({
+            url: '/getprofile',
+            type: 'GET'
+        }).then((result) => {
+            // console.log("result", result);
+            resolve(result);
+        }).catch((err) => {
+            // resolve({});
+            if(err.status == 401) {
+                Toastify({
+                    text: "กรุณาเข้าสู่ระบบ",
+                    duration: 1000,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "center", // `left`, `center` or `right`
+                    backgroundColor: "linear-gradient(to right, #FF4B2B, #FF416C)", // สีพื้นหลัง
+                    onClick: function() {
+                        // เมื่อผู้ใช้คลิกที่ Toast ให้ทำการ redirect
+                        localStorage.removeItem('access_token');
+                        window.location.href = "/login";
+                    }
+                }).showToast();
+
+                localStorage.removeItem('access_token');
+                
+                setTimeout(() => {
+                    window.location.href = "/login";
+                }, 1200);
+            }
+        });
+    });
+}
+
+function renderFoodTypeDropdown2(new_user_data) {
+    const dropdown = $('#foodType2');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle the dropdown when button is clicked
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // Set the selected value and close the dropdown when an item is clicked
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Set the hidden input value
+        dropdown.removeClass('open'); // Close the dropdown
+
+        if(selectedValue != "") {
+            food_filter.food_type = selectedValue;
+        } else {
+            food_filter.food_type = "";
+        }
+
+        $.ajax({
+            url: '/getfoodlist',
+            type: 'GET',
+            data: food_filter
+        }).then((result) => {
+            let filter_data = suggestFoodByUser(result, new_user_data);
+
+            let html = renderFoodRow(filter_data);
+            $('#food_suggest').html(html);
+        }).catch((err) => {
+            // alert(err.status);
+        });
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodCategoryDropdown2(new_user_data) {
+    const dropdown = $('#foodCategory2');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle the dropdown when button is clicked
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // Set the selected value and close the dropdown when an item is clicked
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Set the hidden input value
+        dropdown.removeClass('open'); // Close the dropdown
+
+        if(selectedValue != "") {
+            food_filter.food_category = selectedValue;
+        } else {
+            food_filter.food_category = "";
+        }
+
+        $.ajax({
+            url: '/getfoodlist',
+            type: 'GET',
+            data: food_filter
+        }).then((result) => {
+            let filter_data = suggestFoodByUser(result, new_user_data);
+
+            let html = renderFoodRow(filter_data);
+            $('#food_suggest').html(html);
+        }).catch((err) => {
+            // alert(err.status);
+        });
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+async function renderMealSelectionPage() {
+    let user_data = await getUserData();
+    let calories = findCalorisByUser(user_data);
+
+    let new_user_data = {
+        calories: calories,
+        religion: user_data.religion,
+        food_allergies: user_data.food_allergies
+    };
+
+    // โหลดเมนูเริ่มต้น
+    loadFoodMenu(new_user_data);
+    loadFoodMenu2(new_user_data);
+    loadFoodMenu3(new_user_data);
+
+    // เรนเดอร์ประเภทอาหาร
+    renderFoodCategoryDropdown3(new_user_data);
+    renderFoodMenu()
+
+    renderFoodCategoryDropdown4(new_user_data);
+    renderFoodMenu2()
+
+    renderFoodCategoryDropdown5(new_user_data);
+    renderFoodMenu3()
+}
+
+// โหลดรายการอาหารและอัปเดต ul_foodMenu
+function loadFoodMenu(user_data, selectedCategory = "") {
+    let food_filter = selectedCategory ? { food_category: selectedCategory } : {};
+
+    $.ajax({
+        url: '/getfoodlist',
+        type: 'GET',
+        data: food_filter
+    }).then((result) => {
+        let filter_data = suggestFoodByUser(result, user_data);
+
+        if(filter_data.length == 0){
+            $('#ul_foodMenu').html("<p style='text-align: center; margin: 10px;'>ไม่พบข้อมูล</p>");
+        } else {
+            let html = renderDropdownMenuList(filter_data);
+            $('#ul_foodMenu').html(html); // อัปเดต ul_foodMenu
+        }
+    }).catch((err) => {
+        console.error("Error loading food menu:", err);
+    });
+}
+
+function loadFoodMenu2(user_data, selectedCategory = "") {
+    let food_filter = selectedCategory ? { food_category: selectedCategory } : {};
+
+    $.ajax({
+        url: '/getfoodlist',
+        type: 'GET',
+        data: food_filter
+    }).then((result) => {
+        let filter_data = suggestFoodByUser(result, user_data);
+        if(filter_data.length == 0){
+            $('#ul_foodMenu2').html("<p style='text-align: center; margin: 10px;'>ไม่พบข้อมูล</p>");
+        } else {
+            let html = renderDropdownMenuList(filter_data);
+            $('#ul_foodMenu2').html(html); // อัปเดต ul_foodMenu
+        }
+    }).catch((err) => {
+        console.error("Error loading food menu:", err);
+    });
+}
+
+function loadFoodMenu3(user_data, selectedCategory = "") {
+    let food_filter = selectedCategory ? { food_category: selectedCategory } : {};
+
+    $.ajax({
+        url: '/getfoodlist',
+        type: 'GET',
+        data: food_filter
+    }).then((result) => {
+        let filter_data = suggestFoodByUser(result, user_data);
+        if(filter_data.length == 0){
+            $('#ul_foodMenu3').html("<p style='text-align: center; margin: 10px;'>ไม่พบข้อมูล</p>");
+        } else {
+            let html = renderDropdownMenuList(filter_data);
+            $('#ul_foodMenu3').html(html); // อัปเดต ul_foodMenu
+        }
+    }).catch((err) => {
+        console.error("Error loading food menu:", err);
+    });
+}
+
+// เรนเดอร์ dropdown สำหรับประเภทอาหาร
+function renderFoodCategoryDropdown3(user_data) {
+    const dropdown = $('#foodCategory3');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle dropdown
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // เมื่อเลือกประเภทอาหาร
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // อัปเดตข้อความปุ่ม
+        hiddenInput.val(selectedValue); // อัปเดต hidden input value
+        dropdown.removeClass('open'); // ปิด dropdown
+
+        // โหลดเมนูใหม่ตามประเภทที่เลือก
+        loadFoodMenu(user_data, selectedValue);
+    });
+
+    // ปิด dropdown เมื่อคลิกข้างนอก
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodMenu() {
+    const dropdown = $('#foodMenu');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const hiddenInput = dropdown.find('input[type="hidden"]');
+
+    // Toggle the dropdown
+    button.on('click', function () {
+        dropdown.toggleClass('open');
+    });
+
+    // Event delegation: Handle item clicks dynamically
+    dropdown.on('click', '.dropdown__item', function () {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Update hidden input
+        dropdown.removeClass('open'); // Close dropdown
+
+        insert_history_arr.push(selectedValue);
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function (event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodCategoryDropdown4(user_data) {
+    const dropdown = $('#foodCategory4');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle dropdown
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // เมื่อเลือกประเภทอาหาร
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // อัปเดตข้อความปุ่ม
+        hiddenInput.val(selectedValue); // อัปเดต hidden input value
+        dropdown.removeClass('open'); // ปิด dropdown
+
+        // โหลดเมนูใหม่ตามประเภทที่เลือก
+        loadFoodMenu2(user_data, selectedValue);
+    });
+
+    // ปิด dropdown เมื่อคลิกข้างนอก
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodMenu2() {
+    const dropdown = $('#foodMenu2');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const hiddenInput = dropdown.find('input[type="hidden"]');
+
+    // Toggle the dropdown
+    button.on('click', function () {
+        dropdown.toggleClass('open');
+    });
+
+    // Event delegation: Handle item clicks dynamically
+    dropdown.on('click', '.dropdown__item', function () {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Update hidden input
+        dropdown.removeClass('open'); // Close dropdown
+
+        insert_history_arr.push(selectedValue);
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function (event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodCategoryDropdown5(user_data) {
+    const dropdown = $('#foodCategory5');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const items = dropdown.find('.dropdown__item');
+    const hiddenInput = dropdown.find('input[type="hidden]');
+
+    // Toggle dropdown
+    button.on('click', function() {
+        dropdown.toggleClass('open');
+    });
+
+    // เมื่อเลือกประเภทอาหาร
+    items.on('click', function() {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // อัปเดตข้อความปุ่ม
+        hiddenInput.val(selectedValue); // อัปเดต hidden input value
+        dropdown.removeClass('open'); // ปิด dropdown
+
+        // โหลดเมนูใหม่ตามประเภทที่เลือก
+        loadFoodMenu3(user_data, selectedValue);
+    });
+
+    // ปิด dropdown เมื่อคลิกข้างนอก
+    $(document).on('click', function(event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+function renderFoodMenu3() {
+    const dropdown = $('#foodMenu3');
+    const button = dropdown.find('.dropdown__btn');
+    const list = dropdown.find('.dropdown__list');
+    const hiddenInput = dropdown.find('input[type="hidden"]');
+
+    // Toggle the dropdown
+    button.on('click', function () {
+        dropdown.toggleClass('open');
+    });
+
+    // Event delegation: Handle item clicks dynamically
+    dropdown.on('click', '.dropdown__item', function () {
+        const selectedValue = $(this).data('value');
+        button.text($(this).text()); // Update button text
+        hiddenInput.val(selectedValue); // Update hidden input
+        dropdown.removeClass('open'); // Close dropdown
+
+        insert_history_arr.push(selectedValue);
+    });
+
+    // Close dropdown if clicked outside
+    $(document).on('click', function (event) {
+        if (!dropdown.is(event.target) && dropdown.has(event.target).length === 0) {
+            dropdown.removeClass('open');
+        }
+    });
+}
+
+// ฟังก์ชันช่วยสร้าง HTML ของรายการอาหาร
+function renderDropdownMenuList(filter_data) {
+    let html = "";
+    for (let i = 0; i < filter_data.length; i++) {
+        const item = filter_data[i];
+        html += `
+            <li class="dropdown__item" data-value="${item.id}">${item.food_name}</li>
+        `;
+    }
+    return html;
 }

@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block content %}
+        <div class="detail_container">
+            <h1 style="margin-bottom: 20px;">เลือกมื้ออาหาร</h1>
+
+            <div class="detail_content" style="max-width: 1200px">
+                <div class="meal_box">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">มื้ออาหาร</p>
+                        <p style="height: 48px; display: flex; align-items: center;">เช้า</p>
+                    </div>
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">ประเภทอาหาร</p>
+                        <div class="dropdown" id="foodCategory3">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกประเภทอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list">
+                                <li class="dropdown__item" data-value="">ทั้งหมด</li>
+                                <li class="dropdown__item" data-value="น้ำพริก">น้ำพริก</li>
+                                <li class="dropdown__item" data-value="ยำ">ยำ</li>
+                                <li class="dropdown__item" data-value="อาหารอีสาน">อาหารอีสาน</li>
+                                <li class="dropdown__item" data-value="ต้ม">ต้ม</li>
+                                <li class="dropdown__item" data-value="ผัด">ผัด</li>
+                                <li class="dropdown__item" data-value="แกง">แกง</li>
+                                <li class="dropdown__item" data-value="นึ่ง">นึ่ง</li>
+                                <li class="dropdown__item" data-value="ย่าง">ย่าง</li>
+                                <li class="dropdown__item" data-value="ทอด">ทอด</li>
+                            </ul>
+                            <input type="hidden" id="food_category3" name="food_category" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">เมนูอาหาร</p>
+                        <div class="dropdown" id="foodMenu">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกเมนูอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list" id="ul_foodMenu"></ul>
+                            <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="meal_box">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">มื้ออาหาร</p>
+                        <p style="height: 48px; display: flex; align-items: center;">กลางวัน</p>
+                    </div>
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">ประเภทอาหาร</p>
+                        <div class="dropdown" id="foodCategory4">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกประเภทอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list">
+                                <li class="dropdown__item" data-value="">ทั้งหมด</li>
+                                <li class="dropdown__item" data-value="น้ำพริก">น้ำพริก</li>
+                                <li class="dropdown__item" data-value="ยำ">ยำ</li>
+                                <li class="dropdown__item" data-value="อาหารอีสาน">อาหารอีสาน</li>
+                                <li class="dropdown__item" data-value="ต้ม">ต้ม</li>
+                                <li class="dropdown__item" data-value="ผัด">ผัด</li>
+                                <li class="dropdown__item" data-value="แกง">แกง</li>
+                                <li class="dropdown__item" data-value="นึ่ง">นึ่ง</li>
+                                <li class="dropdown__item" data-value="ย่าง">ย่าง</li>
+                                <li class="dropdown__item" data-value="ทอด">ทอด</li>
+                            </ul>
+                            <input type="hidden" id="food_category3" name="food_category" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">เมนูอาหาร</p>
+                        <div class="dropdown" id="foodMenu2">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกเมนูอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list" id="ul_foodMenu2"></ul>
+                            <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="meal_box">
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">มื้ออาหาร</p>
+                        <p style="height: 48px; display: flex; align-items: center;">เย็น</p>
+                    </div>
+                    <div class="meal_col" style="border-right: 2px solid #ccc;">
+                        <p class="column_text">ประเภทอาหาร</p>
+                        <div class="dropdown" id="foodCategory5">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกประเภทอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list">
+                                <li class="dropdown__item" data-value="">ทั้งหมด</li>
+                                <li class="dropdown__item" data-value="น้ำพริก">น้ำพริก</li>
+                                <li class="dropdown__item" data-value="ยำ">ยำ</li>
+                                <li class="dropdown__item" data-value="อาหารอีสาน">อาหารอีสาน</li>
+                                <li class="dropdown__item" data-value="ต้ม">ต้ม</li>
+                                <li class="dropdown__item" data-value="ผัด">ผัด</li>
+                                <li class="dropdown__item" data-value="แกง">แกง</li>
+                                <li class="dropdown__item" data-value="นึ่ง">นึ่ง</li>
+                                <li class="dropdown__item" data-value="ย่าง">ย่าง</li>
+                                <li class="dropdown__item" data-value="ทอด">ทอด</li>
+                            </ul>
+                            <input type="hidden" id="food_category3" name="food_category" required>
+                        </div>
+                    </div>
+                    <div class="meal_col">
+                        <p class="column_text">เมนูอาหาร</p>
+                        <div class="dropdown" id="foodMenu3">
+                            <button style='font-family: "Kanit", serif;' class="dropdown__btn" id="foodCategory">
+                                <p style='font-family: "Kanit", serif;'>เลือกเมนูอาหาร</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown__list" id="ul_foodMenu3"></ul>
+                            <input type="hidden" id="foodMenu" name="food_menu" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="profile_save_btn" id="his_submit_btn">เลือกเมนูอาหาร</button>
+            </div>
+        </div>
+    {% endblock %}
+</body>
