@@ -1602,36 +1602,6 @@ async function renderSuggestPage() {
 
     renderFoodTypeDropdown2(new_user_data);
     renderFoodCategoryDropdown2(new_user_data);
-
-    $('#his_submit_btn').on('click', function(e) {
-        e.preventDefault();
-        
-        if(insert_history_arr.length > 0){
-            for(let i = 0; i < insert_history_arr.length; i++){
-                let food_obj = {
-                    "food_id": insert_history_arr[i]
-                }
-    
-                $.ajax({
-                    url: '/addhistory',
-                    type: 'POST',
-                    data: food_obj
-                }).then((result) => {
-                    // alert(result.message);
-                    Toastify({
-                        text: result.message,
-                        duration: 1000,
-                        close: true,
-                        gravity: "top", // `top` or `bottom`
-                        position: "right", // `left`, `center` or `right`
-                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"// สีพื้นหลัง
-                    }).showToast();
-                }).catch((err) => {
-                    // alert(err.status);
-                });
-            }
-        }
-    });
 }
 
 function suggestFoodByUser(data, user_data) {
@@ -1960,6 +1930,40 @@ async function renderMealSelectionPage() {
 
     renderFoodCategoryDropdown5(new_user_data);
     renderFoodMenu3()
+
+    $('#his_submit_btn').on('click', function(e) {
+        e.preventDefault();
+        
+        if(insert_history_arr.length > 0){
+            for(let i = 0; i < insert_history_arr.length; i++){
+                let food_obj = {
+                    "food_id": insert_history_arr[i]
+                }
+    
+                $.ajax({
+                    url: '/addhistory',
+                    type: 'POST',
+                    data: food_obj
+                }).then((result) => {
+                    // alert(result.message);
+                    Toastify({
+                        text: result.message,
+                        duration: 1000,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"// สีพื้นหลัง
+                    }).showToast();
+
+                    setTimeout(() => {
+                        window.location.href = "/history";
+                    }, 1200);
+                }).catch((err) => {
+                    // alert(err.status);
+                });
+            }
+        }
+    });
 }
 
 // โหลดรายการอาหารและอัปเดต ul_foodMenu
