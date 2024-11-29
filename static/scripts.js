@@ -1629,6 +1629,10 @@ function suggestFoodByUser(data, user_data) {
         user_allergy = user_allergy.split(",");
     }
 
+    if(user_data.religion == "อิสลาม"){
+        user_allergy.push("เนื้อหมู");
+    }
+
     let food_allergy_list = [];
     for (let i = 0; i < user_allergy.length; i++) {
         let trimmedAllergy = user_allergy[i].trim();  // Trim the space
